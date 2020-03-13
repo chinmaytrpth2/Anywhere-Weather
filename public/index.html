@@ -26,20 +26,41 @@
     -->
     <title>React App</title>
     <style>
-      *{
-        margin: 0px;
-        padding: 0px;
+      body
+      {
+        margin: 0;
+        padding: 0;
+        color:white;
       }
-      body{
-        background-image: url('./images/img3.png');
+      .container
+      {
+        width: 100%;
         height: 100vh;
-        background-size:cover; 
+        overflow: hidden;
+        background: url('./images/background.jpg');
+        background-attachment: fixed;
+      }
+      .mixBlnd
+      {
+        background-blend-mode: screen;
       }
     </style>
+    <script src="parallax.js"></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div class="container">
+        <div id="root"></div>
+        <ul id="scene">
+            <li class="layer" data-depth=".1"></li>
+            <li class="layer" data-depth="1"><img style="margin-top: 5%;" src="./images/p1.png"></li>
+            <li class="layer" data-depth="-1"><img src="./images/planet2.png"></li>
+            <li class="layer" data-depth="2"><img style="margin-top: -5%;" src="./images/astro.png"></li>
+            <li class="layer" data-depth="0.5"><img src="./images/rocket.png"></li>
+          </ul>
+          
+    </div>
+    
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -50,5 +71,11 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+        var scene = document.getElementById('scene');
+        var parallax = new Parallax(scene);
+      </script>
+
   </body>
+
 </html>
