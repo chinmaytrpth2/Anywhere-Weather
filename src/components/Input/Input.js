@@ -1,20 +1,28 @@
 import React,{useState} from 'react';
+import { TextField, Button } from '@material-ui/core';
 
-const Input = ({changeCity, setCity, City}) => {
+import './Input.css';
+
+const Input = ({changeCity, setCity, City, Label, isError}) => {
 
 //   const[City, setCity] = useState('');
   
   return (
-    <div>
-      <h1>Enter City Name:</h1>
-      <input
+    <div className="Input">
+    <div className="Inputfield">
+      <TextField id="standard-basic" label={Label}
+      error={isError} 
       className="input"
       type="text"
-      placeholder="Enter a City..."
       value={City}
       onChange={({ target: { value } }) => setCity(value)}
     />
-    <button className="sendButton" onClick={() => changeCity(City)}>Send</button>
+    </div>
+    <div className="button">
+    <Button variant="contained" color="secondary"  onClick={() => changeCity(City)}>
+        Send
+    </Button>
+    </div>
     </div>
   );
 }

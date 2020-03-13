@@ -1,0 +1,12 @@
+.button {
+    margin: 12px;
+}
+
+.Input{
+    display: flex;
+    width: 22%;
+    margin: auto;
+}
+Inputfield {
+    margin-left: 15%;
+}

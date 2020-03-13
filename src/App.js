@@ -15,6 +15,8 @@ function App() {
   const[Min, setMin] = useState('');
   const[Max, setMax] = useState('');
   const[Temp, setTemp] = useState('');
+  const[InputError, SetInputError] = useState(false);
+  const[InputLabel, SetInputLabel] = useState('Enter a City...');
   const[WeatherInfo, setWeatherInfo] = useState('');
 
   let data;
@@ -47,7 +49,8 @@ function App() {
       getWeather();
     }
     else{
-      alert("Enter a City Name..");
+      SetInputLabel("Please Enter City's Name");
+      SetInputError(true);
     }
     
   }
@@ -55,10 +58,12 @@ function App() {
 
   return (
     <div className="App">
-      Weather App
+      <h1>Weather App</h1>
       <Input changeCity={changeCity} 
       setCity={setCity} 
-      City={City}/>
+      City={City}
+      Label={InputLabel}
+      isError={InputError}/>
 
       <Weather name={name}
       temp={Temp} 

@@ -9,37 +9,37 @@ const Icon = ({type}) => {
 
   switch(type){
       case ('Clouds'):
-      icon = <FontAwesomeIcon icon={faCloud} />
+      icon = <FontAwesomeIcon icon={faCloud} size = '8x' />
       break;
       case ('Mist'):
-      icon = <FontAwesomeIcon icon={faSmog} />
+      icon = <FontAwesomeIcon icon={faSmog} size = '8x' />
       break;
       case ('Haze'):
-      icon = <FontAwesomeIcon icon={faCloudSun} />
+      icon = <FontAwesomeIcon icon={faCloudSun} size = '8x' />
       break;
       case ('Clear'):
-      icon = <FontAwesomeIcon icon={faSun} />
+      icon = <FontAwesomeIcon icon={faSun} size = '8x' />
       break;
       case ('Sand'):
-      icon = <FontAwesomeIcon icon={faBroom} />
+      icon = <FontAwesomeIcon icon={faBroom} size = '8x' />
       break;
       case ('Smoke'):
-      icon = <FontAwesomeIcon icon={faSmog} />
+      icon = <FontAwesomeIcon icon={faSmog} size = '8x'/>
       break;
       case ('Dust'):
-      icon = <FontAwesomeIcon icon={faCloudMeatball} />
+      icon = <FontAwesomeIcon icon={faCloudMeatball} size = '8x' />
       break;
       case ('Drizzle'):
-      icon = <FontAwesomeIcon icon={faCloudSun} />
+      icon = <FontAwesomeIcon icon={faCloudSun} size = '8x'/>
       break;
       case ('Rain'):
-      icon = <FontAwesomeIcon icon={faCloudRain} />
+      icon = <FontAwesomeIcon icon={faCloudRain} size = '8x'/>
       break;
       case ('Thunderstorm'):
-      icon = <FontAwesomeIcon icon={faCloudShowersHeavy} />
+      icon = <FontAwesomeIcon icon={faCloudShowersHeavy} size = '8x'/>
       break;
       case ('Snow'):
-      icon = <FontAwesomeIcon icon={faSnowflake} />
+      icon = <FontAwesomeIcon icon={faSnowflake} size = '8x'/>
       break;
     default:
       icon = null;
