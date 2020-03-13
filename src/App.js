@@ -1,24 +1,70 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import Weather from './components/Weather/Weather';
+import Input from './components/Input/Input';
+import { async } from 'q';
+
+
+const API_KEY = "3c0647af179354972a06e028c20d3ffc";
+
 
 function App() {
+
+  const[City, setCity] = useState('');
+  const[name, setName] = useState('');
+  const[Min, setMin] = useState('');
+  const[Max, setMax] = useState('');
+  const[Temp, setTemp] = useState('');
+  const[WeatherInfo, setWeatherInfo] = useState('');
+
+  let data;
+
+  const getWeather = async(city) => {
+
+    const toCelsuis = (temp) => {
+      let C = Math.floor(temp-273.15);
+      return C;
+    }
+
+    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${City}&appid=${API_KEY}`);
+    if(api_call.status === 200){
+    data = await api_call.json();
+    setName(data.name);
+    setTemp(data.main.temp);
+    setMin(toCelsuis(data.main.temp_min));
+    setMax(toCelsuis(data.main.temp_max));
+    setWeatherInfo(data.weather[0].main);
+    console.log(data);
+    }
+    else{
+      alert("No Data like such in the DB!");
+    }
+  }
+
+
+  const changeCity = (city) => {
+    if(City){
+      getWeather();
+    }
+    else{
+      alert("Enter a City Name..");
+    }
+    
+  }
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      Weather App
+      <Input changeCity={changeCity} 
+      setCity={setCity} 
+      City={City}/>
+
+      <Weather name={name}
+      temp={Temp} 
+      min={Min} 
+      max={Max}
+      weatherInfo={WeatherInfo}/>
     </div>
   );
 }
